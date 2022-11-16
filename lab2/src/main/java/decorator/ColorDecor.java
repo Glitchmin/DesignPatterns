@@ -1,7 +1,7 @@
 package decorator;
 
 public class ColorDecor extends DrawnShapeDecor {
-    ColorTypes colorType;
+    private final ColorTypes colorType;
 
     public ColorDecor(Decorator drawnShape, ColorTypes colorType) {
         super(drawnShape);

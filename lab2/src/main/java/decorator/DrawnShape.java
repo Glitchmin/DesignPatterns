@@ -1,19 +1,13 @@
 package decorator;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-import javax.swing.plaf.synth.ColorType;
-import java.util.Vector;
 
 public class DrawnShape {
     private Shape shape = ShapeTypes.TRIANGLE.getShape();
-    ColorTypes colorType = ColorTypes.BLUE;
-    LineTypes lineType = LineTypes.SOLID;
-
-
+    private ColorTypes colorType = ColorTypes.BLUE;
+    private LineTypes lineType = LineTypes.SOLID;
 
 
     public void setColor(ColorTypes colorType) {

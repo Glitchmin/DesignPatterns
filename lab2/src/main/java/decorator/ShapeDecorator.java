@@ -1,7 +1,7 @@
 package decorator;
 
 public class ShapeDecorator extends DrawnShapeDecor {
-    ShapeTypes shapeType;
+    protected ShapeTypes shapeType;
     public ShapeDecorator(Decorator drawnShape, ShapeTypes shapeTypes){
         super(drawnShape);
         this.shapeType = shapeTypes;

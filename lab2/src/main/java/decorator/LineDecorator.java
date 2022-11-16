@@ -1,7 +1,7 @@
 package decorator;
 
 public class LineDecorator extends DrawnShapeDecor {
-    LineTypes lineType;
+    private final LineTypes lineType;
     public LineDecorator(Decorator drawnShape, LineTypes lineType){
         super(drawnShape);
         this.lineType = lineType;

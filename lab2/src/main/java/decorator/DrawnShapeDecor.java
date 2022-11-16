@@ -3,7 +3,7 @@ package decorator;
 import decorator.Decorator;
 
 public abstract class DrawnShapeDecor implements Decorator {
-    Decorator drawnShape;
+    protected Decorator drawnShape;
     public DrawnShapeDecor(Decorator drawnShape){
         this.drawnShape = drawnShape;
     }
