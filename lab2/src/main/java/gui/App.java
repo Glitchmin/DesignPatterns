@@ -2,18 +2,17 @@ package gui;
 
 import decorator.*;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 public class App extends Application {
     private final GridPane gridPane = new GridPane();
-    private final Canvas canva = new Canvas(600, 600);
+    private final Canvas canvas = new Canvas(600, 600);
     Decorator shape = null;
     Shape prevShape = null;
     ColorPicker colorPick;
@@ -27,9 +26,8 @@ public class App extends Application {
         }
 
         prevShape = shape.drawShape().getShape();
-        gridPane.add(prevShape,0,0);
-
-
+        gridPane.add(prevShape,0,0,800,500);
+        gridPane.setAlignment(Pos.CENTER);
     }
 
     public void setShape(Decorator shape) {
@@ -49,7 +47,7 @@ public class App extends Application {
         Scene scene = new Scene(gridPane, 800, 800);
         primaryStage.setScene(scene);
         gridPane.add(new VBox(colorPick.getHBox(), linePick.getHBox(),shapePick.getHBox()), 1, 0);
-        gridPane.add(canva, 0, 0);
+        gridPane.add(canvas, 0, 0);
         draw();
         primaryStage.show();
 

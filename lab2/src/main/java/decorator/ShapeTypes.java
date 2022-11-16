@@ -13,7 +13,7 @@ public enum ShapeTypes {
         switch (this) {
             case TRIANGLE -> {
                 Polygon tr = new Polygon();
-                tr.getPoints().setAll(40d, 400d, 400d, 400d, 200d, 40d);
+                tr.getPoints().setAll(40d, 400d, 400d, 400d, 220d, 40d);
                 return tr;
             }
             case SQUARE -> {
