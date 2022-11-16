@@ -28,9 +28,7 @@ public class DrawnShape {
     private void apply(){
         this.shape.setStroke(colorType.getColor());
         this.shape.getStrokeDashArray().clear();
-        System.out.println( this.shape.getStrokeDashArray()+"c !");
         this.shape.getStrokeDashArray().addAll(lineType.getDashArray());
-        System.out.println( this.shape.getStrokeDashArray()+" !");
         this.shape.setStrokeWidth(2.0);
 
         shape.setFill(new Color(0,0,0,0));

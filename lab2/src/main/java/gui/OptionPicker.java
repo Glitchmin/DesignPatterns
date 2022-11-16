@@ -39,7 +39,6 @@ public abstract class OptionPicker {
         this.hBox.getChildren().add(new Label(optionNames[optionNum]));
         this.hBox.getChildren().add(changeButton);
         applyChange();
-        System.out.println(this.shape.drawShape().getShape());
         app.setShape(shape);
         app.draw();
 

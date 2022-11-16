@@ -29,15 +29,14 @@ public class App extends Application {
         prevShape = shape.drawShape().getShape();
         gridPane.add(prevShape,0,0);
 
-        colorPick.setShape(shape);
-        linePick.setShape(shape);
-        shapePick.setShape(shape);
 
-        System.out.println(shape);
     }
 
     public void setShape(Decorator shape) {
         this.shape = shape;
+        colorPick.setShape(shape);
+        linePick.setShape(shape);
+        shapePick.setShape(shape);
     }
 
     public void start(Stage primaryStage) {

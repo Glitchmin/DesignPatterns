@@ -13,6 +13,5 @@ public class ColorPicker extends OptionPicker {
     @Override
     protected void applyChange(){
         shape = (new ColorDecor(shape, (ColorTypes.values()[optionNum])));
-        System.out.println(shape+"<-col");
     }
 }
