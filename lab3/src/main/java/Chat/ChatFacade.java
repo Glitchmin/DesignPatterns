@@ -1,8 +1,10 @@
-public class Facade {
+package Chat;
+
+public class ChatFacade {
     private final NetworkHandler networkHandler;
     Thread receiver;
 
-    public Facade(String name) {
+    public ChatFacade(String name) {
         networkHandler = new NetworkHandler(name);
     }
 
@@ -33,6 +35,10 @@ public class Facade {
 
     public void stopReceivingMessages() {
         receiver.interrupt();
+    }
+
+    public String getAddress() {
+        return Integer.toString(networkHandler.getPort());
     }
 
 }

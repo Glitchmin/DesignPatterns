@@ -1,3 +1,5 @@
+package Chat;
+
 public class MsgReceiver implements Runnable {
     NetworkHandler networkHandler;
 

@@ -1,3 +1,5 @@
+package Chat;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -35,17 +37,21 @@ public class NetworkHandler {
         return port;
     }
 
-    public void broadcast(String text) {
+    public void broadcast(String text, String prefix) {
         for (int i = min_port_num; i < max_port_num; i++) {
             if (i == port) {
                 continue;
             }
             try {
-                sendMessage(i, text);
+                sendMessage(i, prefix + " " + text);
             } catch (IOException e) {
 
             }
         }
+    }
+
+    public void broadcast(String text) {
+        broadcast(text, "b");
     }
 
     private void sendMessage(int port, String text) throws IOException {
@@ -67,12 +73,12 @@ public class NetworkHandler {
     }
 
     public void broadcastWelcomeMessage() {
-        broadcast("n " + port + " " + name);
+        broadcast(port + " " + name, "n");
     }
 
-    private void ansToWelcome(int port) {
+    private void ansToWelcome(int destPort) {
         try {
-            sendMessage(port, "a " + port + " " + name);
+            sendMessage(destPort, "a " + port + " " + name);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,7 +95,7 @@ public class NetworkHandler {
             String msg = din.readUTF();
             recv_s.getInputStream().close();
             recv_s.close();
-            if (msg.charAt(0) == 'n' | msg.charAt(0) == 'a') {
+            if (msg.charAt(0) == 'n' || msg.charAt(0) == 'a') {
                 return handleNewUser(msg);
             }
             if (msg.charAt(0) == 'm') {
@@ -106,6 +112,10 @@ public class NetworkHandler {
                 nameToPortMap.remove(name);
                 return name + " left the chat";
             }
+            if (msg.charAt(0) == 'b') {
+                return "broadcast msg received: " + msg.substring(1);
+            }
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -138,11 +148,11 @@ public class NetworkHandler {
         char[] nameCht = new char[50];
         msg.getChars(2, 6, portCht, 0);
         String name = getNameFromCht(msg, nameCht);
-        int port = Integer.parseInt(String.valueOf(portCht));
-        nameToPortMap.put(name, port);
+        int newUserPort = Integer.parseInt(String.valueOf(portCht));
+        nameToPortMap.put(name, newUserPort);
         if (msg.charAt(0) == 'n') {
-            ansToWelcome(port);
+            ansToWelcome(newUserPort);
         }
-        return ("new guy! " + name + " " + port);
+        return ("new guy! " + name + " " + newUserPort);
     }
 }
