@@ -85,42 +85,44 @@ public class NetworkHandler {
     }
 
     public void broadcastGoodbyeMessage() {
-        broadcast("g " + port + " " + name);
+        broadcast(port + " " + name, "g");
     }
 
     public String checkMessages() {
         try {
-            Socket recv_s = ss.accept();
-            DataInputStream din = new DataInputStream(recv_s.getInputStream());
-            String msg = din.readUTF();
-            recv_s.getInputStream().close();
-            recv_s.close();
-            if (msg.charAt(0) == 'n' || msg.charAt(0) == 'a') {
-                return handleNewUser(msg);
-            }
-            if (msg.charAt(0) == 'm') {
-                char[] msgCht = msg.toCharArray();
-                msgCht[0] = ' ';
-                return "new message" + new String(msgCht);
-            }
-            if (msg.charAt(0) == 'g') {
-                char[] msgCht = msg.toCharArray();
-                msgCht[0] = ' ';
-                char[] nameCht = new char[50];
-                String name = getNameFromCht(msg, nameCht);
-                System.out.println(name);
-                nameToPortMap.remove(name);
-                return name + " left the chat";
-            }
-            if (msg.charAt(0) == 'b') {
-                return "broadcast msg received: " + msg.substring(1);
+            String msg = receiveMessage();
+            switch (msg.charAt(0)) {
+                case 'n':
+                case 'a':
+                    return handleNewUser(msg);
+                case 'm': {
+                    return "new message: " + msg.substring(1);
+                }
+                case 'g': {
+                    char[] nameCht = new char[50];
+                    String name = getNameFromCht(msg, nameCht);
+                    System.out.println(name);
+                    nameToPortMap.remove(name);
+                    return name + " left the chat";
+                }
+                case 'b':
+                    return "broadcast msg received: " + msg.substring(1);
             }
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return "unrecognized message received";
+    }
+
+    private String receiveMessage() throws IOException {
+        Socket recv_s = ss.accept();
+        DataInputStream din = new DataInputStream(recv_s.getInputStream());
+        String msg = din.readUTF();
+        recv_s.getInputStream().close();
+        recv_s.close();
+        return msg;
     }
 
     private String getNameFromCht(String msg, char[] nameCht) {
