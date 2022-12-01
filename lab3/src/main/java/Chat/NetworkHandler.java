@@ -3,10 +3,7 @@ package Chat;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.BindException;
-import java.net.ConnectException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,7 +11,7 @@ import java.util.Map;
 
 public class NetworkHandler {
 
-    private ServerSocket ss;
+    public ServerSocket ss;
     private int port;
     private final String name;
     private static final int min_port_num = 5000;
@@ -91,6 +88,9 @@ public class NetworkHandler {
     public String checkMessages() {
         try {
             String msg = receiveMessage();
+            if (msg.length() < 1) {
+                return "";
+            }
             switch (msg.charAt(0)) {
                 case 'n':
                 case 'a':
@@ -117,12 +117,16 @@ public class NetworkHandler {
     }
 
     private String receiveMessage() throws IOException {
-        Socket recv_s = ss.accept();
+        try {
+            Socket recv_s = ss.accept();
         DataInputStream din = new DataInputStream(recv_s.getInputStream());
         String msg = din.readUTF();
         recv_s.getInputStream().close();
         recv_s.close();
         return msg;
+        }
+        catch (SocketException ignored) {}
+        return "";
     }
 
     private String getNameFromCht(String msg, char[] nameCht) {

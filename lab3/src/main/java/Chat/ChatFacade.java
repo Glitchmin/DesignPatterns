@@ -1,5 +1,7 @@
 package Chat;
 
+import java.io.IOException;
+
 public class ChatFacade {
     private final NetworkHandler networkHandler;
     Thread receiver;
@@ -34,7 +36,16 @@ public class ChatFacade {
     }
 
     public void stopReceivingMessages() {
+        try {
+            networkHandler.ss.close();
+        } catch (IOException ignored) {
+        }
         receiver.interrupt();
+        try {
+            receiver.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getAddress() {
