@@ -3,12 +3,17 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class JsonFileParser {
-    BufferedReader reader;
+    FileReader reader;
     JsonFileParser(String path) throws IOException {
-        reader = new BufferedReader(new FileReader(path));
+        reader = new FileReader(path);
     }
+
+
     FinalObject parseJson(){
         Builder builder = new Builder();
+
+
+
         return builder.buildFinalObject();
     }
 
