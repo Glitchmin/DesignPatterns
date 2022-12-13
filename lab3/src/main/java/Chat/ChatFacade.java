@@ -1,8 +1,12 @@
-public class Facade {
+package Chat;
+
+import java.io.IOException;
+
+public class ChatFacade {
     private final NetworkHandler networkHandler;
     Thread receiver;
 
-    public Facade(String name) {
+    public ChatFacade(String name) {
         networkHandler = new NetworkHandler(name);
     }
 
@@ -32,7 +36,20 @@ public class Facade {
     }
 
     public void stopReceivingMessages() {
+        try {
+            networkHandler.ss.close();
+        } catch (IOException ignored) {
+        }
         receiver.interrupt();
+        try {
+            receiver.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getAddress() {
+        return Integer.toString(networkHandler.getPort());
     }
 
 }

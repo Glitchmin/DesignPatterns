@@ -1,4 +1,6 @@
-public class MsgReceiver implements Runnable {
+package Chat;
+
+public class MsgReceiver extends Thread {
     NetworkHandler networkHandler;
 
     MsgReceiver(NetworkHandler networkHandler) {
@@ -6,7 +8,7 @@ public class MsgReceiver implements Runnable {
     }
 
     public void run() {
-        while(true) {
+        while(!interrupted()) {
             System.out.println(networkHandler.checkMessages());
         }
     }

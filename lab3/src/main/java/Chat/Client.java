@@ -1,9 +1,10 @@
+package Chat;
 
 public class Client {
-    Facade networkFacade;
+    ChatFacade networkFacade;
     int port;
     public Client(String name){
-        this.networkFacade = new Facade(name);
+        this.networkFacade = new ChatFacade(name);
         networkFacade.startReceivingMessages();
         networkFacade.broadcastWelcomingMessage();
         try {
