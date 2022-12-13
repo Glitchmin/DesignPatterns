@@ -1,6 +1,16 @@
+import java.io.IOException;
+
 public class World {
     public static void main(String[] args) {
-        System.out.println("test");
+        try {
+            JsonFileParser parser = new JsonFileParser("resources/xmpl.json");
+            parser.parseJson();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
 

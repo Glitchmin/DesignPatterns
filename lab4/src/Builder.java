@@ -1,10 +1,10 @@
 public class Builder {
-    FinalObject object = new FinalObject();
+    CompoundObject object = new CompoundObject();
     Builder append(String name, JsonObject jsonObject){
         object.addJSON_Object(name, jsonObject);
         return this;
     }
-    FinalObject buildFinalObject(){
+    CompoundObject buildFinalObject(){
         return object;
     }
 }
