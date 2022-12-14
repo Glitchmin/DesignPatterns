@@ -50,8 +50,8 @@ public class JsonFileParser {
         try {
             char c = getNoWhitespaceChar();
             StringBuilder valueBuilder = new StringBuilder();
+            valueBuilder.append(c);
             if (c >= '0' && c <= '9') {
-                valueBuilder.append(c);
                 return parseNumber(valueBuilder);
             }
             if (c == '\"') {
