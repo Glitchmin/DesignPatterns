@@ -1,7 +1,9 @@
+package JsonBuilder;
+
 public class Builder {
     CompoundObject object = new CompoundObject();
     Builder append(String name, JsonObject jsonObject){
-        object.addJSON_Object(name, jsonObject);
+        object.addJsonObject(name, jsonObject);
         return this;
     }
     CompoundObject buildFinalObject(){

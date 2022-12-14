@@ -1,3 +1,5 @@
+package JsonBuilder;
+
 public class JsonFloat extends JsonObject{
     Float own_float;
     JsonFloat(Float own_float){
