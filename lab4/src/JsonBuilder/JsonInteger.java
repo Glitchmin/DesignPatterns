@@ -6,4 +6,9 @@ public class JsonInteger extends JsonObject {
         this.integer = integer;
     }
 
+    @Override
+    public String toString() {
+        return "[int] " + integer;
+    }
+
 }
