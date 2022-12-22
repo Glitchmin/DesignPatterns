@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/Adam/Documents/Studia/DesignPatterns/lab5/dp_lab5/out/build/x64-Debug/dp_lab5/CMakeFiles/dp_lab5.dir/embed.manifest"

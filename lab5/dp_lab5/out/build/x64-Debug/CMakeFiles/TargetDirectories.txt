@@ -1,0 +1,5 @@
+C:/Users/Adam/Documents/Studia/DesignPatterns/lab5/dp_lab5/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Adam/Documents/Studia/DesignPatterns/lab5/dp_lab5/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Adam/Documents/Studia/DesignPatterns/lab5/dp_lab5/out/build/x64-Debug/dp_lab5/CMakeFiles/dp_lab5.dir
+C:/Users/Adam/Documents/Studia/DesignPatterns/lab5/dp_lab5/out/build/x64-Debug/dp_lab5/CMakeFiles/edit_cache.dir
+C:/Users/Adam/Documents/Studia/DesignPatterns/lab5/dp_lab5/out/build/x64-Debug/dp_lab5/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,11 @@
+# ninja log v5
+6	414	6934511863792742	dp_lab5/CMakeFiles/dp_lab5.dir/StateMachine.cpp.obj	2406d50616117f2c
+3	408	6934511863742765	dp_lab5/CMakeFiles/dp_lab5.dir/dp_lab5.cpp.obj	c96fad7bdc13e6c
+1	130	6934531900550962	build.ninja	e108c4ec7b74a41c
+625	726	6934503411021577	dp_lab5/dp_lab5.exe	cb8221ab915602a9
+0	747	6934531928422996	dp_lab5/CMakeFiles/dp_lab5.dir/StateMachine.cpp.obj	2406d50616117f2c
+7	748	6934531928432960	dp_lab5/CMakeFiles/dp_lab5.dir/dp_lab5.cpp.obj	c96fad7bdc13e6c
+7	428	6934532235210940	dp_lab5/CMakeFiles/dp_lab5.dir/States.cpp.obj	3364310b53639c1b
+0	449	6934532235430749	dp_lab5/CMakeFiles/dp_lab5.dir/dp_lab5.cpp.obj	c96fad7bdc13e6c
+4	450	6934532235430749	dp_lab5/CMakeFiles/dp_lab5.dir/StateMachine.cpp.obj	2406d50616117f2c
+450	575	6934532236467588	dp_lab5/dp_lab5.exe	7e913ed486e266f0
