@@ -2,7 +2,7 @@ from typing import List
 
 import numpy as np
 
-from NodeVisitor import NodeVisitor, ScalarSumVisitor, BinaryOpVisitor
+from NodeVisitor import NodeVisitor, MatrixMultiplicationVisitor
 
 
 class Node:
@@ -10,7 +10,6 @@ class Node:
         self.visitor = visitor
         self.output = None
         self.inputs: List[Node] = list(inputs)
-        print
 
     def compute(self):
         """accept analogue"""
@@ -28,9 +27,9 @@ class InputNode(Node):
 
 def main():
     print("hello")
-    piemc = InputNode(5)
-    cztei = InputNode(4)
-    sumka = Node(BinaryOpVisitor(lambda a, b: a + b), piemc, cztei)
+    piemc = InputNode(np.matrix([[1, 1], [2, 2]]))
+    cztei = InputNode(np.matrix([[1, 1], [3, 2]]))
+    sumka = Node(MatrixMultiplicationVisitor(), piemc, cztei)
     print(sumka.compute())
 
 

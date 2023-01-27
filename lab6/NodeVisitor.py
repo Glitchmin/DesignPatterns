@@ -1,8 +1,8 @@
 import abc
 from typing import Tuple
 
-
 # from main import Node
+import numpy as np
 
 
 class NodeVisitor(abc.ABC):
@@ -16,9 +16,30 @@ class ScalarSumVisitor(NodeVisitor):
         return inputs[0].compute() + inputs[1].compute()
 
 
-class BinaryOpVisitor(NodeVisitor):
-    def __init__(self, operation):
-        self.operation = operation
+class AddVisitor(NodeVisitor):
 
     def visit(self, *inputs):
-        return self.operation(inputs[0].compute(), inputs[1].compute())
+        return inputs[0].compute() + inputs[1].compute()
+
+
+class SubtractVisitor(NodeVisitor):
+
+    def visit(self, *inputs):
+        return inputs[0].compute() - inputs[1].compute()
+
+
+class ScalarMultiplicationVisitor(NodeVisitor):
+
+    def visit(self, *inputs):
+        return inputs[0].compute() * inputs[1].compute()
+
+
+class MatrixMultiplicationVisitor(NodeVisitor):
+
+    def visit(self, *inputs):
+        return inputs[0].compute() @ inputs[1].compute()
+
+
+class InversionVisitor(NodeVisitor):
+    def visit(self, *inputs):
+        return np.linalg.inv(inputs[0])
