@@ -40,6 +40,6 @@ class MatrixMultiplicationVisitor(NodeVisitor):
         return inputs[0].compute() @ inputs[1].compute()
 
 
-class InversionVisitor(NodeVisitor):
+class TransposeVisitor(NodeVisitor):
     def visit(self, *inputs):
-        return np.linalg.inv(inputs[0])
+        return np.matrix.transpose(inputs[0].compute())
